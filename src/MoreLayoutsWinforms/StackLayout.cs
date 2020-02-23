@@ -1,22 +1,22 @@
 ﻿using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace MoreLayoutsWinforms
 {
-    public interface IStackLayoutParams : ILayoutParams
+    public interface IStackLayoutParams : ILayoutParams<ILayoutElement>
     {
         Orientation Orientation { get; }
         int Spacing { get; }
     }
 
 
-    public class StackLayoutPanel : AbstractLayoutPanel<IStackLayoutParams>, IStackLayoutParams
+    public class StackLayoutPanel : AbstractLayoutPanel<IStackLayoutParams, ILayoutElement>, IStackLayoutParams
     {
         private Orientation _orientation = Orientation.Vertical;
         private int _spacing;
 
-        protected override AbstractLayoutEngine<IStackLayoutParams> CreateLayoutEngine() => new StackLayoutEngine();
+        protected override AbstractLayoutEngine<IStackLayoutParams, ILayoutElement> CreateLayoutEngine() => new StackLayoutEngine();
+        protected override ILayoutElement CreateLayoutElement(Control child) => new LayoutElement(child);
 
         #region Properties
 
@@ -42,34 +42,29 @@ namespace MoreLayoutsWinforms
     }
 
 
-    public class StackLayoutEngine : AbstractLayoutEngine<IStackLayoutParams>
+    public class StackLayoutEngine : AbstractLayoutEngine<IStackLayoutParams, ILayoutElement>
     {
-        protected override void LayoutOverride(IStackLayoutParams layoutParams, Control container, LayoutEventArgs layoutEventArgs)
+        protected override void LayoutOverride(IStackLayoutParams layoutParams)
         {
             var elementBounds = layoutParams.DisplayRectangle;
             var isHorizontal = layoutParams.Orientation == Orientation.Horizontal;
 
-            foreach (Control child in container.Controls)
+            foreach (var element in layoutParams.Elements)
             {
-                var childSize = layoutParams.GetSpecifiedSize(child);
+                var elementSize = element.SpecifiedSize;
 
                 if (isHorizontal)
-                    elementBounds.Width = childSize.Width;
+                    elementBounds.Width = elementSize.Width;
                 else
-                    elementBounds.Height = childSize.Height;
+                    elementBounds.Height = elementSize.Height;
 
-                ArrangeElement(child, childSize, elementBounds);
+                element.Arrange(LayoutUtils.AnchorRect(elementBounds, elementSize, element.Anchor));
 
                 if (isHorizontal)
                     elementBounds.X += elementBounds.Width + layoutParams.Spacing;
                 else
                     elementBounds.Y += elementBounds.Height + layoutParams.Spacing;
             }
-        }
-
-        private static void ArrangeElement(Control child, Size childSize, Rectangle elementBounds)
-        {
-            child.Arrange(LayoutUtils.AnchorRect(elementBounds, childSize, child.Anchor));
         }
     }
 }
