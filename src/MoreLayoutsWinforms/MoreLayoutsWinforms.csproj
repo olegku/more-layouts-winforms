@@ -45,9 +45,16 @@
     <Compile Include="AbstractLayoutEngine.cs" />
     <Compile Include="AbstractLayoutPanel.cs" />
     <Compile Include="ControlExtensions.cs" />
+    <Compile Include="DockLayout.cs" />
     <Compile Include="ILayoutParams.cs" />
     <Compile Include="LayoutUtils.cs" />
     <Compile Include="StackLayout.cs" />
+    <Compile Include="TestDockLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestDockLayout.Designer.cs">
+      <DependentUpon>TestDockLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestStackLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -58,6 +65,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="TestDockLayout.resx">
+      <DependentUpon>TestDockLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestStackLayout.resx">
       <DependentUpon>TestStackLayout.cs</DependentUpon>
     </EmbeddedResource>

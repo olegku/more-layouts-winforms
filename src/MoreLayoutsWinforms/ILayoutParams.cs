@@ -21,16 +21,16 @@ namespace MoreLayoutsWinforms
 
     public class LayoutElement : ILayoutElement
     {
-        private readonly Control _control;
 
         public LayoutElement(Control control)
         {
-            _control = control ?? throw new ArgumentNullException(nameof(control));
+            Control = control ?? throw new ArgumentNullException(nameof(control));
         }
 
-        public Size SpecifiedSize => _control.GetSpecifiedSize();
-        public AnchorStyles Anchor => _control.Anchor;
+        protected Control Control { get; }
+        public Size SpecifiedSize => Control.GetSpecifiedSize();
+        public AnchorStyles Anchor => Control.Anchor;
 
-        public void Arrange(Rectangle bounds) => _control.Arrange(bounds);
+        public void Arrange(Rectangle bounds) => Control.Arrange(bounds);
     }
 }
