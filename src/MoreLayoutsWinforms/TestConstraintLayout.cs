@@ -16,7 +16,6 @@ namespace MoreLayoutsWinforms
         public TestConstraintLayout()
         {
             InitializeComponent();
-            constraintLayoutPanel1.Controls.Add(new Button());
         }
     }
 }

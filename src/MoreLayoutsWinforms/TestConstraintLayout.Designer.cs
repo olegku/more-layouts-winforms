@@ -36,9 +36,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Location = new System.Drawing.Point(10, 10);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(209, 104);
+            this.button2.Size = new System.Drawing.Size(93, 156);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -46,6 +46,7 @@
             // constraintLayoutPanel1
             // 
             this.constraintLayoutPanel1.Controls.Add(this.button1);
+            this.constraintLayoutPanel1.Controls.Add(this.button2);
             this.constraintLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.constraintLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.constraintLayoutPanel1.Name = "constraintLayoutPanel1";
@@ -66,7 +67,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.constraintLayoutPanel1);
             this.Name = "TestConstraintLayout";
             this.Size = new System.Drawing.Size(777, 414);

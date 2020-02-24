@@ -41,17 +41,30 @@ namespace MoreLayoutsWinforms
             PerformLayout(this, propertyName);
         }
 
-        protected override void OnControlAdded(ControlEventArgs e)
-        {
-            // TODO: this event happens after layout update is called, so doesn't' help
-            base.OnControlAdded(e);
-            _elements[e.Control] = CreateLayoutElement(e.Control);
-        }
-
         protected override void OnControlRemoved(ControlEventArgs e)
         {
             base.OnControlRemoved(e);
             _elements.Remove(e.Control);
+        }
+
+        protected override ControlCollection CreateControlsInstance() => new MyControlCollection(this);
+
+
+        private class MyControlCollection : Control.ControlCollection
+        {
+            private readonly AbstractLayoutPanel<TLayoutParams, TLayoutElement> _owner;
+
+            public MyControlCollection(AbstractLayoutPanel<TLayoutParams, TLayoutElement> owner) : base(owner)
+            {
+                _owner = owner;
+            }
+
+            public override void Add(Control value)
+            {
+                // TODO: value can be already added
+                _owner._elements[value] = _owner.CreateLayoutElement(value);
+                base.Add(value);
+            }
         }
     }
 }
