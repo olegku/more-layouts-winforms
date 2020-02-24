@@ -61,7 +61,7 @@ namespace MoreLayoutsWinforms
                         break;
                     
                     case DockStyle.Left:
-                        elementBounds = Rectangle.FromLTRB(left, top, left += elementSize.Width, bottom);
+                        elementBounds = Rectangle.FromLTRB(left, top, left + elementSize.Width, bottom);
                         left += elementSize.Width;
                         break;
                     
