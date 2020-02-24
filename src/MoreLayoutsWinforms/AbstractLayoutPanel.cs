@@ -14,11 +14,16 @@ namespace MoreLayoutsWinforms
         where TLayoutElement : ILayoutElement
     {
         private LayoutEngine _layoutEngine;
+        private readonly Dictionary<Control, TLayoutElement> _elements = new Dictionary<Control, TLayoutElement>();
 
         public sealed override LayoutEngine LayoutEngine => _layoutEngine ?? (_layoutEngine = CreateLayoutEngine());
 
         // TODO: remove Linq
-        public IReadOnlyList<TLayoutElement> Elements => Controls.OfType<Control>().Select(CreateLayoutElement).ToList().AsReadOnly();
+        public IReadOnlyList<TLayoutElement> Elements => Controls
+            .OfType<Control>()
+            .Select(control => _elements[control])
+            .ToList()
+            .AsReadOnly();
 
         public Size GetSpecifiedSize(Control child)
         {
@@ -34,6 +39,19 @@ namespace MoreLayoutsWinforms
             if (EqualityComparer<T>.Default.Equals(field, value)) return;
             field = value;
             PerformLayout(this, propertyName);
+        }
+
+        protected override void OnControlAdded(ControlEventArgs e)
+        {
+            // TODO: this event happens after layout update is called, so doesn't' help
+            base.OnControlAdded(e);
+            _elements[e.Control] = CreateLayoutElement(e.Control);
+        }
+
+        protected override void OnControlRemoved(ControlEventArgs e)
+        {
+            base.OnControlRemoved(e);
+            _elements.Remove(e.Control);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace MoreLayoutsWinforms
@@ -56,6 +57,20 @@ namespace MoreLayoutsWinforms
             }
 
             return Rectangle.FromLTRB(left, top, right, bottom);
+        }
+
+        public static int Round(float value)
+        {
+            return (int)Math.Round(value, MidpointRounding.AwayFromZero);
+        }
+
+        public static Rectangle Round(RectangleF rect)
+        {
+            return new Rectangle(
+                Round(rect.Left), 
+                Round(rect.Top), 
+                Round(rect.Width), 
+                Round(rect.Height));
         }
     }
 

@@ -47,11 +47,23 @@
   <ItemGroup>
     <Compile Include="AbstractLayoutEngine.cs" />
     <Compile Include="AbstractLayoutPanel.cs" />
+    <Compile Include="ConstraintLayout\ConstraintLayoutEngine.cs" />
+    <Compile Include="ConstraintLayout\ConstraintLayoutPanel.cs" />
+    <Compile Include="ConstraintLayout\ConstraintProperty.cs" />
+    <Compile Include="ConstraintLayout\IConstraintLayoutParams.cs" />
+    <Compile Include="ConstraintLayout\SimpleConstraint.cs" />
     <Compile Include="ControlExtensions.cs" />
     <Compile Include="DockLayout.cs" />
+    <Compile Include="ConstraintLayout\ElementVars.cs" />
     <Compile Include="ILayoutParams.cs" />
     <Compile Include="LayoutUtils.cs" />
     <Compile Include="StackLayout.cs" />
+    <Compile Include="TestConstraintLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestConstraintLayout.Designer.cs">
+      <DependentUpon>TestConstraintLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestDockLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,6 +80,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="TestConstraintLayout.resx">
+      <DependentUpon>TestConstraintLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestDockLayout.resx">
       <DependentUpon>TestDockLayout.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,5 +90,6 @@
       <DependentUpon>TestStackLayout.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
