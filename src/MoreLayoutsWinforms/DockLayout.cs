@@ -35,7 +35,10 @@ namespace MoreLayoutsWinforms
     {
         protected override void LayoutOverride(IDockLayoutParams layoutParams)
         {
-            var availableBounds = layoutParams.DisplayRectangle;
+            var left = layoutParams.DisplayRectangle.Left;
+            var top= layoutParams.DisplayRectangle.Top;
+            var right = layoutParams.DisplayRectangle.Right;
+            var bottom = layoutParams.DisplayRectangle.Bottom;
 
             foreach (var element in layoutParams.Elements)
             {
@@ -48,39 +51,27 @@ namespace MoreLayoutsWinforms
                         goto default;
                     
                     case DockStyle.Top:
-                        SliceHorizontally(
-                            availableBounds, 
-                            slice: availableBounds.Top + elementSize.Height, 
-                            topRect: out elementBounds, 
-                            bottomRect: out availableBounds);
+                        elementBounds = Rectangle.FromLTRB(left, top, right, top + elementSize.Height);
+                        top += elementSize.Height;
                         break;
                     
                     case DockStyle.Bottom:
-                        SliceHorizontally(
-                            availableBounds,
-                            slice: availableBounds.Bottom - elementSize.Height,
-                            topRect: out availableBounds,
-                            bottomRect: out elementBounds);
+                        elementBounds = Rectangle.FromLTRB(left, bottom - elementSize.Height, right, bottom);
+                        bottom -= elementSize.Height;
                         break;
                     
                     case DockStyle.Left:
-                        SliceVertically(
-                            availableBounds,
-                            slice: availableBounds.Left + elementSize.Width,
-                            leftRect: out elementBounds,
-                            rightRect: out availableBounds);
+                        elementBounds = Rectangle.FromLTRB(left, top, left += elementSize.Width, bottom);
+                        left += elementSize.Width;
                         break;
                     
                     case DockStyle.Right:
-                        SliceVertically(
-                            availableBounds,
-                            slice: availableBounds.Right - elementSize.Width,
-                            leftRect: out availableBounds,
-                            rightRect: out elementBounds);
+                        elementBounds = Rectangle.FromLTRB(right - elementSize.Width, top, right, bottom);
+                        right -= elementSize.Width;
                         break;
                     
                     case DockStyle.Fill:
-                        elementBounds = availableBounds;
+                        elementBounds = Rectangle.FromLTRB(left, top, right, bottom);
                         break;
                     
                     default:
@@ -90,18 +81,6 @@ namespace MoreLayoutsWinforms
 
                 element.Arrange(elementBounds);
             }
-        }
-
-        private static void SliceVertically(Rectangle rect, int slice, out Rectangle leftRect, out Rectangle rightRect)
-        {
-            leftRect = Rectangle.FromLTRB(rect.Left, rect.Top, slice, rect.Bottom);
-            rightRect = Rectangle.FromLTRB(slice, rect.Top, rect.Right, rect.Bottom);
-        }
-
-        private static void SliceHorizontally(Rectangle rect, int slice, out Rectangle topRect, out Rectangle bottomRect)
-        {
-            topRect = Rectangle.FromLTRB(rect.Left, rect.Top, rect.Right, slice);
-            bottomRect = Rectangle.FromLTRB(rect.Left, slice, rect.Right, rect.Bottom);
         }
     }
 }
