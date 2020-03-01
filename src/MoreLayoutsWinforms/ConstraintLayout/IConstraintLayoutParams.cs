@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using MoreLayoutsWinforms.Core;
 
 namespace MoreLayoutsWinforms.ConstraintLayout
 {

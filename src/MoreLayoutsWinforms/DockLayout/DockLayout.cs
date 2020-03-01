@@ -1,7 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using MoreLayoutsWinforms.Core;
 
-namespace MoreLayoutsWinforms
+namespace MoreLayoutsWinforms.DockLayout
 {
     public interface IDockLayoutParams : ILayoutParams<IDockLayoutElement>
     {

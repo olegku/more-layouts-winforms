@@ -8,7 +8,5 @@ namespace MoreLayoutsWinforms
         {
             InitializeComponent();
         }
-
-        public StackLayoutPanel StackLayoutPanel => stackLayoutPanel1;
     }
 }

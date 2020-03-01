@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Windows.Forms.Layout;
 
-namespace MoreLayoutsWinforms
+namespace MoreLayoutsWinforms.Core
 {
     [DesignerCategory("code")]
     public abstract class AbstractLayoutPanel<TLayoutParams, TLayoutElement> : Panel, ILayoutParams<TLayoutElement> 

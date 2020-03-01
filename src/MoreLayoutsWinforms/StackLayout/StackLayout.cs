@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
+using MoreLayoutsWinforms.Core;
 
-namespace MoreLayoutsWinforms
+namespace MoreLayoutsWinforms.StackLayout
 {
     public interface IStackLayoutParams : ILayoutParams<ILayoutElement>
     {

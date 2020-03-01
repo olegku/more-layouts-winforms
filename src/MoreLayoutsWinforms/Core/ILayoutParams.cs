@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace MoreLayoutsWinforms
+namespace MoreLayoutsWinforms.Core
 {
     public interface ILayoutParams<out TElement> where TElement : ILayoutElement
     {
