@@ -45,48 +45,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractLayoutEngine.cs" />
-    <Compile Include="AbstractLayoutPanel.cs" />
+    <Compile Include="Core\AbstractLayoutEngine.cs" />
+    <Compile Include="Core\AbstractLayoutPanel.cs" />
     <Compile Include="ConstraintLayout\ConstraintLayoutEngine.cs" />
     <Compile Include="ConstraintLayout\ConstraintLayoutPanel.cs" />
     <Compile Include="ConstraintLayout\ConstraintProperty.cs" />
     <Compile Include="ConstraintLayout\IConstraintLayoutParams.cs" />
     <Compile Include="ConstraintLayout\SimpleConstraint.cs" />
-    <Compile Include="ControlExtensions.cs" />
-    <Compile Include="DockLayout.cs" />
+    <Compile Include="Core\ControlExtensions.cs" />
+    <Compile Include="DockLayout\DockLayout.cs" />
     <Compile Include="ConstraintLayout\ElementVars.cs" />
-    <Compile Include="ILayoutParams.cs" />
-    <Compile Include="LayoutUtils.cs" />
-    <Compile Include="StackLayout.cs" />
-    <Compile Include="TestConstraintLayout.cs">
+    <Compile Include="Core\ILayoutParams.cs" />
+    <Compile Include="Core\LayoutUtils.cs" />
+    <Compile Include="StackLayout\StackLayout.cs" />
+    <Compile Include="Samples\TestConstraintLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TestConstraintLayout.Designer.cs">
+    <Compile Include="Samples\TestConstraintLayout.Designer.cs">
       <DependentUpon>TestConstraintLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestDockLayout.cs">
+    <Compile Include="Samples\TestDockLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TestDockLayout.Designer.cs">
+    <Compile Include="Samples\TestDockLayout.Designer.cs">
       <DependentUpon>TestDockLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestStackLayout.cs">
+    <Compile Include="Samples\TestStackLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TestStackLayout.Designer.cs">
+    <Compile Include="Samples\TestStackLayout.Designer.cs">
       <DependentUpon>TestStackLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="TestConstraintLayout.resx">
+    <EmbeddedResource Include="Samples\TestConstraintLayout.resx">
       <DependentUpon>TestConstraintLayout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestDockLayout.resx">
+    <EmbeddedResource Include="Samples\TestDockLayout.resx">
       <DependentUpon>TestDockLayout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestStackLayout.resx">
+    <EmbeddedResource Include="Samples\TestStackLayout.resx">
       <DependentUpon>TestStackLayout.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
