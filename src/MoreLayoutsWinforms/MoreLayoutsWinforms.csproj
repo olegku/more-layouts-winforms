@@ -10,7 +10,7 @@
     <AssemblyName>MoreLayouts</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <!-- <Deterministic>true</Deterministic> -->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,7 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstraintLayout\SimpleConstraintControlConverter.cs" />
+    <Compile Include="ConstraintLayout\SimpleConstraintConverter.cs" />
     <Compile Include="Core\AbstractLayoutEngine.cs" />
+    <Compile Include="Core\AbstractLayoutPanel.ControlCollection.cs" />
     <Compile Include="Core\AbstractLayoutPanel.cs" />
     <Compile Include="ConstraintLayout\ConstraintLayoutEngine.cs" />
     <Compile Include="ConstraintLayout\ConstraintLayoutPanel.cs" />

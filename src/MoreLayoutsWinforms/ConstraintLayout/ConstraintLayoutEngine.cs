@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Globalization;
 using Kiwi;
 using MoreLayoutsWinforms.Core;
 
@@ -14,8 +16,15 @@ namespace MoreLayoutsWinforms.ConstraintLayout
             {
                 AddCommonConstraints(solver, element, layoutParams.DisplayRectangle);
 
-                solver.AddConstraint(element.Vars.Width == element.SpecifiedSize.Width);
-                solver.AddConstraint(element.Vars.Height == element.SpecifiedSize.Height);
+                AddSimpleConstraint(solver, layoutParams, element.Vars.Left, element.Left);
+                AddSimpleConstraint(solver, layoutParams, element.Vars.Top, element.Top);
+                AddSimpleConstraint(solver, layoutParams, element.Vars.Center, element.Center);
+                AddSimpleConstraint(solver, layoutParams, element.Vars.Middle, element.Middle);
+                AddSimpleConstraint(solver, layoutParams, element.Vars.Right, element.Right);
+                AddSimpleConstraint(solver, layoutParams, element.Vars.Bottom, element.Bottom);
+
+                solver.AddConstraint(element.Vars.Width == element.SpecifiedSize.Width | Strength.Medium);
+                solver.AddConstraint(element.Vars.Height == element.SpecifiedSize.Height | Strength.Medium);
             }
 
             solver.UpdateVariables();
@@ -28,7 +37,29 @@ namespace MoreLayoutsWinforms.ConstraintLayout
                     (float)vars.Top.Value,
                     (float)vars.Width.Value, 
                     (float)vars.Height.Value);
+
                 element.Arrange(LayoutUtils.Round(elementBounds));
+            }
+        }
+
+        private static void AddSimpleConstraint(
+            Solver solver,
+            IConstraintLayoutParams layoutParams,
+            Variable lhs,
+            SimpleConstraint constraint)
+        {
+            if (constraint == null) return;
+
+            if (constraint.Control == null || 
+                constraint.Property == ConstraintProperty.None)
+            {
+                solver.AddConstraint(lhs == constraint.Constant);
+            }
+            else
+            {
+                var element = layoutParams.GetElement(constraint.Control);
+                var elementVar = element.Vars[constraint.Property];
+                solver.AddConstraint(lhs == elementVar + constraint.Constant);
             }
         }
 

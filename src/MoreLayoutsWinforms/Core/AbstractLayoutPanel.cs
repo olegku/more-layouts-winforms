@@ -9,7 +9,7 @@ using System.Windows.Forms.Layout;
 namespace MoreLayoutsWinforms.Core
 {
     [DesignerCategory("code")]
-    public abstract class AbstractLayoutPanel<TLayoutParams, TLayoutElement> : Panel, ILayoutParams<TLayoutElement> 
+    public abstract partial class AbstractLayoutPanel<TLayoutParams, TLayoutElement> : Panel, ILayoutParams<TLayoutElement> 
         where TLayoutParams : ILayoutParams<TLayoutElement>
         where TLayoutElement : ILayoutElement
     {
@@ -25,11 +25,15 @@ namespace MoreLayoutsWinforms.Core
             .ToList()
             .AsReadOnly();
 
+        public TLayoutElement GetElement(Control control) => _elements[control];
+
         public Size GetSpecifiedSize(Control child)
         {
             child.VerifyParent(this);
             return child.GetSpecifiedSize();
         }
+
+        protected override Control.ControlCollection CreateControlsInstance() => new ControlCollection(this);
 
         protected abstract AbstractLayoutEngine<TLayoutParams, TLayoutElement> CreateLayoutEngine();
         protected abstract TLayoutElement CreateLayoutElement(Control child);
@@ -39,32 +43,6 @@ namespace MoreLayoutsWinforms.Core
             if (EqualityComparer<T>.Default.Equals(field, value)) return;
             field = value;
             PerformLayout(this, propertyName);
-        }
-
-        protected override void OnControlRemoved(ControlEventArgs e)
-        {
-            base.OnControlRemoved(e);
-            _elements.Remove(e.Control);
-        }
-
-        protected override ControlCollection CreateControlsInstance() => new MyControlCollection(this);
-
-
-        private class MyControlCollection : Control.ControlCollection
-        {
-            private readonly AbstractLayoutPanel<TLayoutParams, TLayoutElement> _owner;
-
-            public MyControlCollection(AbstractLayoutPanel<TLayoutParams, TLayoutElement> owner) : base(owner)
-            {
-                _owner = owner;
-            }
-
-            public override void Add(Control value)
-            {
-                // TODO: value can be already added
-                _owner._elements[value] = _owner.CreateLayoutElement(value);
-                base.Add(value);
-            }
         }
     }
 }

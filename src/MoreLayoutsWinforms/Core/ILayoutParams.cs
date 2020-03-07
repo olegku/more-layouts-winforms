@@ -10,6 +10,9 @@ namespace MoreLayoutsWinforms.Core
         // TODO: rename to LayoutBounds?
         Rectangle DisplayRectangle { get; }
         IReadOnlyList<TElement> Elements { get; }
+
+        // TODO: try redo to not expose Control instances to layout logic by default
+        TElement GetElement(Control control);
     }
 
     public interface ILayoutElement

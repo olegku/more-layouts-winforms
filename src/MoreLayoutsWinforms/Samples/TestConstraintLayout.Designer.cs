@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
             this.constraintLayoutPanel1 = new MoreLayoutsWinforms.ConstraintLayout.ConstraintLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.constraintLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(10, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 156);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // constraintLayoutPanel1
             // 
@@ -58,10 +49,23 @@
             // 
             this.button1.Location = new System.Drawing.Point(10, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 30);
+            this.button1.Size = new System.Drawing.Size(94, 30);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.constraintLayoutPanel1.SetLeft(this.button2, new MoreLayoutsWinforms.ConstraintLayout.SimpleConstraint(this.button1, MoreLayoutsWinforms.ConstraintLayout.ConstraintProperty.Left, 0));
+            this.button2.Location = new System.Drawing.Point(10, 50);
+            this.button2.Name = "button2";
+            this.constraintLayoutPanel1.SetRight(this.button2, new MoreLayoutsWinforms.ConstraintLayout.SimpleConstraint(this.button1, MoreLayoutsWinforms.ConstraintLayout.ConstraintProperty.Right, 0));
+            this.button2.Size = new System.Drawing.Size(94, 156);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.constraintLayoutPanel1.SetTop(this.button2, new MoreLayoutsWinforms.ConstraintLayout.SimpleConstraint(this.button1, MoreLayoutsWinforms.ConstraintLayout.ConstraintProperty.Bottom, 10));
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // TestConstraintLayout
             // 
