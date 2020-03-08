@@ -1,6 +1,4 @@
-﻿using MoreLayouts.WinForms.DockLayout;
-
-namespace MoreLayoutsWinforms
+﻿namespace MoreLayoutsWinforms
 {
     partial class TestDockLayout
     {
@@ -30,7 +28,7 @@ namespace MoreLayoutsWinforms
         /// </summary>
         private void InitializeComponent()
         {
-            this.dockLayoutPanel1 = new DockLayoutPanel();
+            this.dockLayoutPanel1 = new MoreLayouts.WinForms.DockLayout.DockLayoutPanel();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -164,7 +162,7 @@ namespace MoreLayoutsWinforms
 
         #endregion
 
-        private DockLayoutPanel dockLayoutPanel1;
+        private MoreLayouts.WinForms.DockLayout.DockLayoutPanel dockLayoutPanel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button8;
