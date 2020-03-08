@@ -1,4 +1,6 @@
-﻿namespace MoreLayoutsWinforms
+﻿using MoreLayouts.WinForms.ConstraintLayout;
+
+namespace MoreLayoutsWinforms
 {
     partial class TestConstraintLayout
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.constraintLayoutPanel1 = new MoreLayoutsWinforms.ConstraintLayout.ConstraintLayoutPanel();
+            this.constraintLayoutPanel1 = new ConstraintLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.constraintLayoutPanel1.SuspendLayout();
@@ -56,14 +58,14 @@
             // 
             // button2
             // 
-            this.constraintLayoutPanel1.SetLeft(this.button2, new MoreLayoutsWinforms.ConstraintLayout.SimpleConstraint(this.button1, MoreLayoutsWinforms.ConstraintLayout.ConstraintProperty.Left, 0));
+            this.constraintLayoutPanel1.SetLeft(this.button2, new SimpleConstraint(this.button1, ConstraintProperty.Left, 0));
             this.button2.Location = new System.Drawing.Point(10, 50);
             this.button2.Name = "button2";
-            this.constraintLayoutPanel1.SetRight(this.button2, new MoreLayoutsWinforms.ConstraintLayout.SimpleConstraint(this.button1, MoreLayoutsWinforms.ConstraintLayout.ConstraintProperty.Right, 0));
+            this.constraintLayoutPanel1.SetRight(this.button2, new SimpleConstraint(this.button1, ConstraintProperty.Right, 0));
             this.button2.Size = new System.Drawing.Size(94, 156);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
-            this.constraintLayoutPanel1.SetTop(this.button2, new MoreLayoutsWinforms.ConstraintLayout.SimpleConstraint(this.button1, MoreLayoutsWinforms.ConstraintLayout.ConstraintProperty.Bottom, 10));
+            this.constraintLayoutPanel1.SetTop(this.button2, new SimpleConstraint(this.button1, ConstraintProperty.Bottom, 10));
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -81,7 +83,7 @@
 
         #endregion
 
-        private ConstraintLayout.ConstraintLayoutPanel constraintLayoutPanel1;
+        private ConstraintLayoutPanel constraintLayoutPanel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace MoreLayoutsWinforms.Core
+namespace MoreLayouts.WinForms.Core
 {
     public abstract partial class AbstractLayoutPanel<TLayoutParams, TLayoutElement>
     {

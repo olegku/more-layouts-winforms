@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
-using MoreLayoutsWinforms.Core;
+using MoreLayouts.WinForms.Core;
 
-namespace MoreLayoutsWinforms.ConstraintLayout
+namespace MoreLayouts.WinForms.ConstraintLayout
 {
     public interface IConstraintLayoutElement : ILayoutElement
     {

@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace MoreLayoutsWinforms.Core
+namespace MoreLayouts.WinForms.Core
 {
     public static class LayoutUtils
     {

@@ -1,4 +1,4 @@
-﻿namespace MoreLayoutsWinforms.ConstraintLayout
+﻿namespace MoreLayouts.WinForms.ConstraintLayout
 {
     public enum ConstraintProperty
     {

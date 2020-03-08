@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Windows.Forms.Layout;
 
-namespace MoreLayoutsWinforms.Core
+namespace MoreLayouts.WinForms.Core
 {
     public abstract class AbstractLayoutEngine<TLayoutParams, TLayoutElement> : LayoutEngine
         where TLayoutParams : ILayoutParams<TLayoutElement>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreLayoutsWinforms", "MoreLayoutsWinforms\MoreLayoutsWinforms.csproj", "{4D966EA6-75F6-4315-B6F1-22E32AE77C23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreLayouts.Winforms", "MoreLayoutsWinforms\MoreLayouts.Winforms.csproj", "{4D966EA6-75F6-4315-B6F1-22E32AE77C23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreLayouts.WinForms.Samples", "MoreLayouts.WinForms.Samples\MoreLayouts.WinForms.Samples.csproj", "{BF2BC263-687B-4B80-9A96-D8B8389CF756}"
 EndProject

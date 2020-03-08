@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace MoreLayoutsWinforms.ConstraintLayout
+namespace MoreLayouts.WinForms.ConstraintLayout
 {
     [TypeConverter(typeof(SimpleConstraintConverter))]
     public class SimpleConstraint

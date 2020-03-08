@@ -1,6 +1,6 @@
 ﻿using Kiwi;
 
-namespace MoreLayoutsWinforms.ConstraintLayout
+namespace MoreLayouts.WinForms.ConstraintLayout
 {
     // TODO: make internal
     public class ElementVars

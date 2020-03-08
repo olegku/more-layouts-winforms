@@ -1,4 +1,6 @@
-﻿namespace MoreLayoutsWinforms
+﻿using MoreLayouts.WinForms.StackLayout;
+
+namespace MoreLayoutsWinforms
 {
     partial class TestStackLayout
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.stackLayoutPanel1 = new MoreLayoutsWinforms.StackLayout.StackLayoutPanel();
+            this.stackLayoutPanel1 = new StackLayoutPanel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -107,7 +109,7 @@
 
         #endregion
 
-        private MoreLayoutsWinforms.StackLayout.StackLayoutPanel stackLayoutPanel1;
+        private StackLayoutPanel stackLayoutPanel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;

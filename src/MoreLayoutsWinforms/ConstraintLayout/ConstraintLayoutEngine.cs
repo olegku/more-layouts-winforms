@@ -1,10 +1,8 @@
-﻿using System;
-using System.Drawing;
-using System.Globalization;
+﻿using System.Drawing;
 using Kiwi;
-using MoreLayoutsWinforms.Core;
+using MoreLayouts.WinForms.Core;
 
-namespace MoreLayoutsWinforms.ConstraintLayout
+namespace MoreLayouts.WinForms.ConstraintLayout
 {
     public class ConstraintLayoutEngine : AbstractLayoutEngine<IConstraintLayoutParams, IConstraintLayoutElement>
     {

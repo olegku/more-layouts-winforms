@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
-using MoreLayoutsWinforms.Core;
+using MoreLayouts.WinForms.Core;
 
-namespace MoreLayoutsWinforms.ConstraintLayout
+namespace MoreLayouts.WinForms.ConstraintLayout
 {
     [ProvideProperty("Left", typeof(Control))]
     [ProvideProperty("Top", typeof(Control))]
