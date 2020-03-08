@@ -111,7 +111,7 @@
       <Project>{f409e42b-e751-4f17-b7ad-acccf8bb1b5e}</Project>
       <Name>MoreLayouts.WinForms.Design</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MoreLayoutsWinforms\MoreLayouts.Winforms.csproj">
+    <ProjectReference Include="..\MoreLayouts.Winforms\MoreLayouts.Winforms.csproj">
       <Project>{4d966ea6-75f6-4315-b6f1-22e32ae77c23}</Project>
       <Name>MoreLayouts.Winforms</Name>
     </ProjectReference>
