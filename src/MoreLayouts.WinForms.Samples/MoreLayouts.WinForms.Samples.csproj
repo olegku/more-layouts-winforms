@@ -54,6 +54,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestConstraintLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestConstraintLayout.Designer.cs">
+      <DependentUpon>TestConstraintLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestDockLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestDockLayout.Designer.cs">
+      <DependentUpon>TestDockLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestStackLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestStackLayout.Designer.cs">
+      <DependentUpon>TestStackLayout.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +84,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TestConstraintLayout.resx">
+      <DependentUpon>TestConstraintLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestDockLayout.resx">
+      <DependentUpon>TestDockLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestStackLayout.resx">
+      <DependentUpon>TestStackLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +105,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MoreLayouts.WinForms.Design\MoreLayouts.WinForms.Design.csproj">
+      <Project>{f409e42b-e751-4f17-b7ad-acccf8bb1b5e}</Project>
+      <Name>MoreLayouts.WinForms.Design</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoreLayoutsWinforms\MoreLayouts.Winforms.csproj">
+      <Project>{4d966ea6-75f6-4315-b6f1-22e32ae77c23}</Project>
+      <Name>MoreLayouts.Winforms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

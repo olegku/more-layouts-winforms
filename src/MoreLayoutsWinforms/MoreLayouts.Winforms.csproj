@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="ConstraintLayout\SimpleConstraintControlConverter.cs" />
     <Compile Include="ConstraintLayout\SimpleConstraintConverter.cs" />
     <Compile Include="Core\AbstractLayoutEngine.cs" />
@@ -66,37 +65,8 @@
     <Compile Include="Core\ILayoutParams.cs" />
     <Compile Include="Core\LayoutUtils.cs" />
     <Compile Include="StackLayout\StackLayout.cs" />
-    <Compile Include="Samples\TestConstraintLayout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Samples\TestConstraintLayout.Designer.cs">
-      <DependentUpon>TestConstraintLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\TestDockLayout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Samples\TestDockLayout.Designer.cs">
-      <DependentUpon>TestDockLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\TestStackLayout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Samples\TestStackLayout.Designer.cs">
-      <DependentUpon>TestStackLayout.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Samples\TestConstraintLayout.resx">
-      <DependentUpon>TestConstraintLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Samples\TestDockLayout.resx">
-      <DependentUpon>TestDockLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Samples\TestStackLayout.resx">
-      <DependentUpon>TestStackLayout.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

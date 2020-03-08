@@ -28,13 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.testDockLayout1 = new MoreLayoutsWinforms.TestDockLayout();
+            this.SuspendLayout();
+            // 
+            // testDockLayout1
+            // 
+            this.testDockLayout1.Location = new System.Drawing.Point(155, 55);
+            this.testDockLayout1.Name = "testDockLayout1";
+            this.testDockLayout1.Size = new System.Drawing.Size(503, 345);
+            this.testDockLayout1.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.testDockLayout1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private MoreLayoutsWinforms.TestDockLayout testDockLayout1;
     }
 }
 
