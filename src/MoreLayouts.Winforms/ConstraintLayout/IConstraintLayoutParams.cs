@@ -12,6 +12,8 @@ namespace MoreLayouts.WinForms.ConstraintLayout
         SimpleConstraint Middle { get; }
         SimpleConstraint Right { get; }
         SimpleConstraint Bottom { get; }
+        SimpleConstraint Width { get; }
+        SimpleConstraint Height { get; }
     }
 
     public interface IConstraintLayoutParams : ILayoutParams<IConstraintLayoutElement>
@@ -39,5 +41,7 @@ namespace MoreLayouts.WinForms.ConstraintLayout
         public SimpleConstraint Middle { get; set; }
         public SimpleConstraint Right { get; set; }
         public SimpleConstraint Bottom { get; set; }
+        public SimpleConstraint Width { get; set; }
+        public SimpleConstraint Height { get; set; }
     }
 }

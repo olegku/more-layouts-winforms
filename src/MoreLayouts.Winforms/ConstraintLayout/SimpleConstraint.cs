@@ -24,6 +24,7 @@ namespace MoreLayouts.WinForms.ConstraintLayout
         
         public ConstraintProperty Property { get; set; }
 
+        // TODO: rename to Offset?
         public int Constant { get; set; }
 
         #endregion
@@ -40,7 +41,7 @@ namespace MoreLayouts.WinForms.ConstraintLayout
                 var result = $"{Control.Name}.{Property}";
                 if (Constant != 0)
                 {
-                    result += $"+ {Constant}";
+                    result += $" + {Constant}";
                 }
 
                 return result;

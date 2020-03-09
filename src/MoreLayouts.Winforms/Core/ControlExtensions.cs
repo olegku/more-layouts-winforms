@@ -43,10 +43,9 @@ namespace MoreLayouts.WinForms.Core
             }
         }
 
-        public static Size GetSpecifiedSize(this Control control)
+        public static Rectangle GetSpecifiedBounds(this Control control)
         {
-            var specifiedBounds = _delegateGetSpecifiedBounds.Invoke(control);
-            return specifiedBounds.Size;
+            return _delegateGetSpecifiedBounds.Invoke(control);
         }
 
         public static void Arrange(this Control control, Rectangle bounds)

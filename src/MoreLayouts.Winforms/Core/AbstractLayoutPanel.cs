@@ -27,12 +27,6 @@ namespace MoreLayouts.WinForms.Core
 
         public TLayoutElement GetElement(Control control) => _elements[control];
 
-        public Size GetSpecifiedSize(Control child)
-        {
-            child.VerifyParent(this);
-            return child.GetSpecifiedSize();
-        }
-
         protected override Control.ControlCollection CreateControlsInstance() => new ControlCollection(this);
 
         protected abstract AbstractLayoutEngine<TLayoutParams, TLayoutElement> CreateLayoutEngine();

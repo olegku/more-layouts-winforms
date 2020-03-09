@@ -13,6 +13,7 @@ namespace MoreLayouts.WinForms.ConstraintLayout
             foreach (var element in layoutParams.Elements)
             {
                 AddCommonConstraints(solver, element, layoutParams.DisplayRectangle);
+                AddSpecifiedBoundsConstraints(solver, element);
 
                 AddSimpleConstraint(solver, layoutParams, element.Vars.Left, element.Left);
                 AddSimpleConstraint(solver, layoutParams, element.Vars.Top, element.Top);
@@ -20,9 +21,8 @@ namespace MoreLayouts.WinForms.ConstraintLayout
                 AddSimpleConstraint(solver, layoutParams, element.Vars.Middle, element.Middle);
                 AddSimpleConstraint(solver, layoutParams, element.Vars.Right, element.Right);
                 AddSimpleConstraint(solver, layoutParams, element.Vars.Bottom, element.Bottom);
-
-                solver.AddConstraint(element.Vars.Width == element.SpecifiedSize.Width | Strength.Medium);
-                solver.AddConstraint(element.Vars.Height == element.SpecifiedSize.Height | Strength.Medium);
+                AddSimpleConstraint(solver, layoutParams, element.Vars.Width, element.Width);
+                AddSimpleConstraint(solver, layoutParams, element.Vars.Height, element.Height);
             }
 
             solver.UpdateVariables();
@@ -40,26 +40,6 @@ namespace MoreLayouts.WinForms.ConstraintLayout
             }
         }
 
-        private static void AddSimpleConstraint(
-            Solver solver,
-            IConstraintLayoutParams layoutParams,
-            Variable lhs,
-            SimpleConstraint constraint)
-        {
-            if (constraint == null) return;
-
-            if (constraint.Control == null || 
-                constraint.Property == ConstraintProperty.None)
-            {
-                solver.AddConstraint(lhs == constraint.Constant);
-            }
-            else
-            {
-                var element = layoutParams.GetElement(constraint.Control);
-                var elementVar = element.Vars[constraint.Property];
-                solver.AddConstraint(lhs == elementVar + constraint.Constant);
-            }
-        }
 
         private static void AddCommonConstraints(Solver solver, IConstraintLayoutElement element, Rectangle layoutBounds)
         {
@@ -83,6 +63,40 @@ namespace MoreLayouts.WinForms.ConstraintLayout
             solver.AddConstraint(vars.Left + vars.Width / 2 == vars.Center);
             solver.AddConstraint(vars.Top + vars.Height == vars.Bottom);
             solver.AddConstraint(vars.Top + vars.Height / 2 == vars.Middle);
+        }
+
+
+        private static void AddSpecifiedBoundsConstraints(Solver solver, IConstraintLayoutElement element)
+        {
+            var medium1 = Strength.Create(0, 1, 0, 1);
+            var medium2 = Strength.Create(0, 1, 0, 2);
+
+            solver.AddConstraint(element.Vars.Left == element.SpecifiedBounds.Left | medium1);
+            solver.AddConstraint(element.Vars.Top == element.SpecifiedBounds.Top | medium1);
+            solver.AddConstraint(element.Vars.Width == element.SpecifiedSize.Width | medium2);
+            solver.AddConstraint(element.Vars.Height == element.SpecifiedSize.Height | medium2);
+        }
+
+
+        private static void AddSimpleConstraint(
+            Solver solver,
+            IConstraintLayoutParams layoutParams,
+            Variable lhs,
+            SimpleConstraint constraint)
+        {
+            if (constraint == null) return;
+
+            if (constraint.Control == null ||
+                constraint.Property == ConstraintProperty.None)
+            {
+                solver.AddConstraint(lhs == constraint.Constant);
+            }
+            else
+            {
+                var element = layoutParams.GetElement(constraint.Control);
+                var elementVar = element.Vars[constraint.Property];
+                solver.AddConstraint(lhs == elementVar + constraint.Constant);
+            }
         }
     }
 }

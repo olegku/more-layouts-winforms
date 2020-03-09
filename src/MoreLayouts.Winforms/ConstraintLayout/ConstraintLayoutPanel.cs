@@ -4,12 +4,15 @@ using MoreLayouts.WinForms.Core;
 
 namespace MoreLayouts.WinForms.ConstraintLayout
 {
+    [Designer("MoreLayouts.WinForms.Design.ConstraintLayout.ConstraintLayoutPanelDesigner, MoreLayouts.WinForms.Design")]
     [ProvideProperty("Left", typeof(Control))]
     [ProvideProperty("Top", typeof(Control))]
     [ProvideProperty("Center", typeof(Control))]
     [ProvideProperty("Middle", typeof(Control))]
     [ProvideProperty("Right", typeof(Control))]
     [ProvideProperty("Bottom", typeof(Control))]
+    [ProvideProperty("Width", typeof(Control))]
+    [ProvideProperty("Height", typeof(Control))]
     public class ConstraintLayoutPanel : AbstractLayoutPanel<IConstraintLayoutParams, IConstraintLayoutElement>,
         IConstraintLayoutParams, 
         IExtenderProvider
@@ -51,6 +54,16 @@ namespace MoreLayouts.WinForms.ConstraintLayout
         [DefaultValue(null)]
         public SimpleConstraint GetBottom(Control child) => base.GetElement(child).Bottom;
         public void SetBottom(Control child, SimpleConstraint constraint) => GetElement(child).Bottom = constraint;
+
+        [DisplayName("Width")]
+        [DefaultValue(null)]
+        public SimpleConstraint GetWidth(Control child) => base.GetElement(child).Width;
+        public void SetWidth(Control child, SimpleConstraint constraint) => GetElement(child).Width = constraint;
+
+        [DisplayName("Height")]
+        [DefaultValue(null)]
+        public SimpleConstraint GetHeight(Control child) => base.GetElement(child).Height;
+        public void SetHeight(Control child, SimpleConstraint constraint) => GetElement(child).Height = constraint;
 
         #endregion
 

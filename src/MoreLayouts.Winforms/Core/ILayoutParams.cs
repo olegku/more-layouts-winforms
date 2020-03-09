@@ -17,6 +17,7 @@ namespace MoreLayouts.WinForms.Core
 
     public interface ILayoutElement
     {
+        Rectangle SpecifiedBounds { get; }
         Size SpecifiedSize { get; }
         AnchorStyles Anchor { get; }
         void Arrange(Rectangle bounds);
@@ -31,7 +32,9 @@ namespace MoreLayouts.WinForms.Core
         }
 
         protected Control Control { get; }
-        public Size SpecifiedSize => Control.GetSpecifiedSize();
+
+        public Rectangle SpecifiedBounds => Control.GetSpecifiedBounds();
+        public Size SpecifiedSize => SpecifiedBounds.Size;
         public AnchorStyles Anchor => Control.Anchor;
 
         public void Arrange(Rectangle bounds) => Control.Arrange(bounds);
