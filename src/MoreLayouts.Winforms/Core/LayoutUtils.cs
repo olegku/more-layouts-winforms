@@ -6,6 +6,21 @@ namespace MoreLayouts.WinForms.Core
 {
     public static class LayoutUtils
     {
+        public static int GetCenter(this Rectangle rect) => rect.Left + rect.Width / 2;
+        public static int GetMiddle(this Rectangle rect) => rect.Top + rect.Height / 2;
+
+        public static Point GetTopLeft(this Rectangle rect) => new Point(rect.Left, rect.Top);
+        public static Point GetMiddleLeft(this Rectangle rect) => new Point(rect.Left, rect.GetMiddle());
+        public static Point GetBottomLeft(this Rectangle rect) => new Point(rect.Left, rect.Bottom);
+
+        public static Point GetTopCenter(this Rectangle rect) => new Point(rect.GetCenter(), rect.Top);
+        public static Point GetMiddleCenter(this Rectangle rect) => new Point(rect.GetCenter(), rect.GetMiddle());
+        public static Point GetBottomCenter(this Rectangle rect) => new Point(rect.GetCenter(), rect.Bottom);
+
+        public static Point GetTopRight(this Rectangle rect) => new Point(rect.Right, rect.Top);
+        public static Point GetMiddleRight(this Rectangle rect) => new Point(rect.Right, rect.GetMiddle());
+        public static Point GetBottomRight(this Rectangle rect) => new Point(rect.Right, rect.Bottom);
+
         public static Rectangle AnchorRect(Rectangle outerBounds, Size innerSize, AnchorStyles anchorStyles)
         {
             var anchorLeft = AnchorStylesExtensions.HasFlag(anchorStyles, AnchorStyles.Left);
