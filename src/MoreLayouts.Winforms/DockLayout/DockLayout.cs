@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using MoreLayouts.WinForms.Core;
 
@@ -25,6 +26,7 @@ namespace MoreLayouts.WinForms.DockLayout
     }
 
 
+    [Designer("MoreLayouts.WinForms.Design.DockLayoutPanelDesigner, MoreLayouts.WinForms.Design")]
     public class DockLayoutPanel : AbstractLayoutPanel<IDockLayoutParams, IDockLayoutElement>, IDockLayoutParams
     {
         protected override AbstractLayoutEngine<IDockLayoutParams, IDockLayoutElement> CreateLayoutEngine() => new DockLayout();

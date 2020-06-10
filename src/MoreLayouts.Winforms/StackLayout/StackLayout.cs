@@ -11,6 +11,7 @@ namespace MoreLayouts.WinForms.StackLayout
     }
 
 
+    [Designer("MoreLayouts.WinForms.Design.StackLayoutPanelDesigner, MoreLayouts.WinForms.Design")]
     public class StackLayoutPanel : AbstractLayoutPanel<IStackLayoutParams, ILayoutElement>, IStackLayoutParams
     {
         private Orientation _orientation = Orientation.Vertical;
