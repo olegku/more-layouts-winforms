@@ -1,10 +1,12 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using MoreLayouts.WinForms.Core;
 
-namespace MoreLayouts.WinForms.Design.ConstraintLayout
+namespace MoreLayouts.WinForms.Design
 {
     internal class LayoutPanelDesigner : ScrollableControlDesigner
     {
@@ -13,7 +15,15 @@ namespace MoreLayouts.WinForms.Design.ConstraintLayout
             AutoResizeHandles = true;
         }
 
+        public override void Initialize(IComponent component)
+        {
+            MoreDesignerServices.Initialize(component.Site?.GetService<IDesignerHost>());
+            base.Initialize(component);
+        }
+
         public virtual Panel Panel => (Panel)Component;
+
+        protected virtual T GetService<T>() => (T) GetService(typeof(T));
 
         protected override void OnPaintAdornments(PaintEventArgs pe)
         {

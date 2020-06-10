@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -46,8 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConstraintLayout\ConstraintLayoutPanelDesigner.cs" />
-    <Compile Include="ConstraintLayout\LayoutPanelDesigner.cs" />
+    <Compile Include="MoreDesignerServices.cs" />
+    <Compile Include="DockLayoutPanelDesigner.cs" />
+    <Compile Include="LayoutPanelDesigner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProviderExtensions.cs" />
+    <Compile Include="StackLayoutPanelDesigner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoreLayouts.Winforms\MoreLayouts.Winforms.csproj">
