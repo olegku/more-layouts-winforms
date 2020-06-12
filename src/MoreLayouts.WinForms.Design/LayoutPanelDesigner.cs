@@ -21,7 +21,7 @@ namespace MoreLayouts.WinForms.Design
             base.Initialize(component);
         }
 
-        public virtual Panel Panel => (Panel)Component;
+        public Panel Panel => (Panel)Component;
 
         protected virtual T GetService<T>() => (T) GetService(typeof(T));
 

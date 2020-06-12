@@ -28,42 +28,74 @@ namespace MoreLayouts.WinForms.ConstraintLayout
         [DisplayName("Left")]
         [DefaultValue(null)]
         public SimpleConstraint GetLeft(Control child) => base.GetElement(child).Left;
-        public void SetLeft(Control child, SimpleConstraint constraint) => GetElement(child).Left = constraint;
+        public void SetLeft(Control child, SimpleConstraint constraint)
+        {
+            GetElement(child).Left = constraint;
+            PerformLayout(this, "LeftConstraint");
+        }
 
         [DisplayName("Top")]
         [DefaultValue(null)]
         public SimpleConstraint GetTop(Control child) => base.GetElement(child).Top;
-        public void SetTop(Control child, SimpleConstraint constraint) => GetElement(child).Top = constraint;
+        public void SetTop(Control child, SimpleConstraint constraint)
+        {
+            GetElement(child).Top = constraint;
+            PerformLayout(this, "TopConstraint");
+        }
 
         [DisplayName("Center")]
         [DefaultValue(null)]
         public SimpleConstraint GetCenter(Control child) => base.GetElement(child).Center;
-        public void SetCenter(Control child, SimpleConstraint constraint) => GetElement(child).Center = constraint;
+        public void SetCenter(Control child, SimpleConstraint constraint)
+        {
+            GetElement(child).Center = constraint;
+            PerformLayout(this, "CenterConstraint");
+        }
 
         [DisplayName("Middle")]
         [DefaultValue(null)]
         public SimpleConstraint GetMiddle(Control child) => base.GetElement(child).Middle;
-        public void SetMiddle(Control child, SimpleConstraint constraint) => GetElement(child).Middle = constraint;
+        public void SetMiddle(Control child, SimpleConstraint constraint)
+        {
+            GetElement(child).Middle = constraint;
+            PerformLayout(this, "MiddleConstraint");
+        }
 
         [DisplayName("Right")]
         [DefaultValue(null)]
         public SimpleConstraint GetRight(Control child) => base.GetElement(child).Right;
-        public void SetRight(Control child, SimpleConstraint constraint) => GetElement(child).Right = constraint;
+        public void SetRight(Control child, SimpleConstraint constraint)
+        {
+            GetElement(child).Right = constraint;
+            PerformLayout(this, "RightConstraint");
+        }
 
         [DisplayName("Bottom")]
         [DefaultValue(null)]
         public SimpleConstraint GetBottom(Control child) => base.GetElement(child).Bottom;
-        public void SetBottom(Control child, SimpleConstraint constraint) => GetElement(child).Bottom = constraint;
+        public void SetBottom(Control child, SimpleConstraint constraint)
+        {
+            GetElement(child).Bottom = constraint;
+            PerformLayout(this, "BottomConstraint");
+        }
 
         [DisplayName("Width")]
         [DefaultValue(null)]
         public SimpleConstraint GetWidth(Control child) => base.GetElement(child).Width;
-        public void SetWidth(Control child, SimpleConstraint constraint) => GetElement(child).Width = constraint;
+        public void SetWidth(Control child, SimpleConstraint constraint)
+        {
+            GetElement(child).Width = constraint;
+            PerformLayout(this, "WidthConstraint");
+        }
 
         [DisplayName("Height")]
         [DefaultValue(null)]
         public SimpleConstraint GetHeight(Control child) => base.GetElement(child).Height;
-        public void SetHeight(Control child, SimpleConstraint constraint) => GetElement(child).Height = constraint;
+        public void SetHeight(Control child, SimpleConstraint constraint)
+        {
+            GetElement(child).Height = constraint;
+            PerformLayout(this, "HeightConstraint");
+        }
 
         #endregion
 
