@@ -1,4 +1,4 @@
-﻿namespace MoreLayoutsWinforms
+﻿namespace MoreLayouts.WinForms.Samples
 {
     partial class TestConstraintLayout
     {

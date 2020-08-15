@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace MoreLayoutsWinforms
+namespace MoreLayouts.WinForms.Samples
 {
     public partial class TestStackLayout : UserControl
     {

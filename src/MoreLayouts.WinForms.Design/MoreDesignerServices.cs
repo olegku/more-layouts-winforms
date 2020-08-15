@@ -106,7 +106,7 @@ namespace MoreLayouts.WinForms.Design
         public OutputWindowPane GetDebugOutputPane(IServiceProvider serviceProvider)
         {
             var dte = serviceProvider.GetService<DTE>();
-            var outputWindow = (OutputWindow)dte.Windows.Item(StandardToolWindows.OutputWindow).Object;
+            var outputWindow = (OutputWindow)dte.Windows.Item(StandardToolWindows.OutputWindow.ToString("B")).Object;
 
             return outputWindow.OutputWindowPanes
                 .OfType<OutputWindowPane>()

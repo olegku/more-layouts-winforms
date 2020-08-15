@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.testDockLayout1 = new MoreLayoutsWinforms.TestDockLayout();
+            this.testDockLayout1 = new TestDockLayout();
             this.SuspendLayout();
             // 
             // testDockLayout1
@@ -52,7 +52,7 @@
 
         #endregion
 
-        private MoreLayoutsWinforms.TestDockLayout testDockLayout1;
+        private TestDockLayout testDockLayout1;
     }
 }
 
