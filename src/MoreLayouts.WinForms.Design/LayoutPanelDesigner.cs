@@ -17,7 +17,8 @@ namespace MoreLayouts.WinForms.Design
 
         public override void Initialize(IComponent component)
         {
-            MoreDesignerServices.Initialize(component.Site?.GetService<IDesignerHost>());
+            var designerHost = component.Site.GetService<IDesignerHost>();
+            MoreDesignerServices.Initialize(designerHost, this);
             base.Initialize(component);
         }
 

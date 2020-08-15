@@ -21,6 +21,19 @@ namespace MoreLayouts.WinForms.Core
         public static Point GetMiddleRight(this Rectangle rect) => new Point(rect.Right, rect.GetMiddle());
         public static Point GetBottomRight(this Rectangle rect) => new Point(rect.Right, rect.Bottom);
 
+        public static Rectangle Inflate(this Rectangle rect, Padding padding) => Rectangle.FromLTRB(
+            rect.Left - padding.Left,
+            rect.Top - padding.Top,
+            rect.Right + padding.Right,
+            rect.Bottom + padding.Bottom);
+
+        public static Rectangle Deflate(this Rectangle rect, Padding padding) => Rectangle.FromLTRB(
+                rect.Left + padding.Left,
+                rect.Top + padding.Top,
+                rect.Right - padding.Right,
+                rect.Bottom - padding.Bottom);
+
+
         public static Rectangle AnchorRect(Rectangle outerBounds, Size innerSize, AnchorStyles anchorStyles)
         {
             var anchorLeft = AnchorStylesExtensions.HasFlag(anchorStyles, AnchorStyles.Left);

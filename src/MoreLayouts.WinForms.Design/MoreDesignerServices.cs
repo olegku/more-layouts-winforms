@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Design;
 using System.Linq;
+using System.Windows.Forms.Design.Behavior;
 using EnvDTE;
 
 namespace MoreLayouts.WinForms.Design
@@ -13,13 +16,22 @@ namespace MoreLayouts.WinForms.Design
         {
         }
 
-        public static void Initialize(IDesignerHost service)
+        public static void Initialize(IDesignerHost service, LayoutPanelDesigner layoutPanelDesigner)
         {
-            if (service.GetService<MoreDesignerServices>() != null) return;
+            if (service.GetService<MoreDesignerServices>() == null)
+            {
+                service.AddService(typeof(MoreDesignerServices), new MoreDesignerServices());
+                service.AddService(typeof(IDebugOutputPane), (container, type) => new DebugOutputPane(container));
+                service.SubstituteService<ITypeDescriptorFilterService>((container, originalService) => new ExtendedTypeDescriptorFilterService(originalService));
+            }
 
-            service.AddService(typeof(MoreDesignerServices), new MoreDesignerServices());
-            service.AddService(typeof(IDebugOutputPane), (container, type) => new DebugOutputPane(container));
-            service.SubstituteService<ITypeDescriptorFilterService>((container, originalService) => new ExtendedTypeDescriptorFilterService(originalService));
+            var compositionContainer = new CompositionContainer();
+            compositionContainer.ComposeExportedValue(service.GetService<IDesignerHost>());
+            compositionContainer.ComposeExportedValue(service.GetService<BehaviorService>());
+            compositionContainer.ComposeExportedValue(service.GetService<ISelectionService>());
+            compositionContainer.ComposeExportedValue(service.GetService<IDebugOutputPane>());
+
+            compositionContainer.SatisfyImportsOnce(layoutPanelDesigner);
         }
     }
 
@@ -93,15 +105,12 @@ namespace MoreLayouts.WinForms.Design
 
         public OutputWindowPane GetDebugOutputPane(IServiceProvider serviceProvider)
         {
-            const string /*EnvDTE.Constants.*/vsWindowKindOutput = "{34E76E81-EE4A-11D0-AE2E-00A0C90FFFC3}";
-
             var dte = serviceProvider.GetService<DTE>();
-            var outputWindow = (OutputWindow)dte.Windows.Item(vsWindowKindOutput).Object;
+            var outputWindow = (OutputWindow)dte.Windows.Item(StandardToolWindows.OutputWindow).Object;
 
             return outputWindow.OutputWindowPanes
                 .OfType<OutputWindowPane>()
                 .FirstOrDefault(pane => pane.Name == "Debug");
         }
     }
-
 }
