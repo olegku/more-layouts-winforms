@@ -11,9 +11,9 @@ namespace MoreLayouts.WinForms.Samples
             InitializeComponent();
         }
 
-        public ConstraintLayoutPanel ConstraintLayout => constraintLayoutPanel1;
+        //public ConstraintLayoutPanel ConstraintLayout => constraintLayoutPanel1;
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2Click(object sender, EventArgs e)
         {
             constraintLayoutPanel1.SetTop(button2, new SimpleConstraint(button1, ConstraintProperty.Bottom, 0));
         }

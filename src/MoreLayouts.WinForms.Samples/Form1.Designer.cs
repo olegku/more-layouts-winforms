@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.testDockLayout1 = new TestDockLayout();
+            this.testConstraintLayout1 = new MoreLayouts.WinForms.Samples.TestConstraintLayout();
             this.SuspendLayout();
             // 
-            // testDockLayout1
+            // testConstraintLayout1
             // 
-            this.testDockLayout1.Location = new System.Drawing.Point(155, 55);
-            this.testDockLayout1.Name = "testDockLayout1";
-            this.testDockLayout1.Size = new System.Drawing.Size(503, 345);
-            this.testDockLayout1.TabIndex = 0;
+            this.testConstraintLayout1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.testConstraintLayout1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testConstraintLayout1.Location = new System.Drawing.Point(0, 0);
+            this.testConstraintLayout1.Name = "testConstraintLayout1";
+            this.testConstraintLayout1.Size = new System.Drawing.Size(800, 450);
+            this.testConstraintLayout1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.testDockLayout1);
+            this.Controls.Add(this.testConstraintLayout1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -52,7 +54,7 @@
 
         #endregion
 
-        private TestDockLayout testDockLayout1;
+        private TestConstraintLayout testConstraintLayout1;
     }
 }
 

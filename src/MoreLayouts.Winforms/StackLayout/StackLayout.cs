@@ -23,7 +23,7 @@ namespace MoreLayouts.WinForms.StackLayout
         #region Properties
 
         [Category("Layout")]
-        [Description("TODO")]
+        [Description("Orientation of stack elements arrangement")]
         [DefaultValue(Orientation.Vertical)]
         public Orientation Orientation
         {
@@ -32,7 +32,7 @@ namespace MoreLayouts.WinForms.StackLayout
         }
 
         [Category("Layout")]
-        [Description("TODO")]
+        [Description("Spacing between stack elements")]
         [DefaultValue(0)]
         public int Spacing
         {

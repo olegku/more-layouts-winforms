@@ -50,8 +50,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(387, 0);
+            this.button4.Location = new System.Drawing.Point(520, 0);
             this.button4.Name = "button4";
+            this.constraintLayoutPanel1.SetRight(this.button4, new MoreLayouts.WinForms.ConstraintLayout.SimpleConstraint(700));
             this.button4.Size = new System.Drawing.Size(180, 81);
             this.button4.TabIndex = 3;
             this.button4.Text = "button4";
@@ -92,7 +93,7 @@
             this.button2.Text = "button2";
             this.constraintLayoutPanel1.SetTop(this.button2, new MoreLayouts.WinForms.ConstraintLayout.SimpleConstraint(this.button1, MoreLayouts.WinForms.ConstraintLayout.ConstraintProperty.Bottom, 10));
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2Click);
             // 
             // TestConstraintLayout
             // 

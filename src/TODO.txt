@@ -1,0 +1,17 @@
+[ ] common: implement GetPreferredSize()
+[ ] common: simplify ILayoutParams to get rid of ILayoutElement
+
+[v] designtime: draw insert cursor for StackLayoutPanel
+[ ] designtime: Add debug layout guide-lines
+[ ] designtime: constraint-layout: snaplines for constraints
+[v] designtime: add debug output pane service
+[v] designtime: add IChilderDesignerFilter
+[v] designtime: filter layout property
+[v] designtime: use MEF for services
+
+[ ] stack-layout: designer: support undo/redo for insertion
+[ ] stack-panel: designer: annoying bug with AutoScroll=true and stretched element and Padding=0, scrollbar starts to always grow on resize
+
+[ ] constraint-layout: change constant from int to double
+[ ] constraint-layout: allow specify Parent panel as RelativeTo 
+[ ] constraint-layout: ClipToBounds property
