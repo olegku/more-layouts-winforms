@@ -25,7 +25,6 @@ namespace MoreLayouts.WinForms.Core
 
     public class LayoutElement : ILayoutElement
     {
-
         public LayoutElement(Control control)
         {
             Control = control ?? throw new ArgumentNullException(nameof(control));

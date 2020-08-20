@@ -15,14 +15,14 @@ namespace MoreLayouts.WinForms.ConstraintLayout
                 AddCommonConstraints(solver, element, layoutParams.DisplayRectangle);
                 AddSpecifiedBoundsConstraints(solver, element);
 
-                AddSimpleConstraint(solver, layoutParams, element.Vars.Left, element.Left);
-                AddSimpleConstraint(solver, layoutParams, element.Vars.Top, element.Top);
-                AddSimpleConstraint(solver, layoutParams, element.Vars.Center, element.Center);
-                AddSimpleConstraint(solver, layoutParams, element.Vars.Middle, element.Middle);
-                AddSimpleConstraint(solver, layoutParams, element.Vars.Right, element.Right);
-                AddSimpleConstraint(solver, layoutParams, element.Vars.Bottom, element.Bottom);
-                AddSimpleConstraint(solver, layoutParams, element.Vars.Width, element.Width);
-                AddSimpleConstraint(solver, layoutParams, element.Vars.Height, element.Height);
+                element.Left?.AddToSolver(solver, element.Vars.Left, layoutParams);
+                element.Top?.AddToSolver(solver, element.Vars.Top, layoutParams);
+                element.Center?.AddToSolver(solver, element.Vars.Center, layoutParams);
+                element.Middle?.AddToSolver(solver, element.Vars.Middle, layoutParams);
+                element.Right?.AddToSolver(solver, element.Vars.Right, layoutParams);
+                element.Bottom?.AddToSolver(solver, element.Vars.Bottom, layoutParams);
+                element.Width?.AddToSolver(solver, element.Vars.Width, layoutParams);
+                element.Height?.AddToSolver(solver, element.Vars.Height, layoutParams);
             }
 
             solver.UpdateVariables();
@@ -75,28 +75,6 @@ namespace MoreLayouts.WinForms.ConstraintLayout
             solver.AddConstraint(element.Vars.Top == element.SpecifiedBounds.Top | medium1);
             solver.AddConstraint(element.Vars.Width == element.SpecifiedSize.Width | medium2);
             solver.AddConstraint(element.Vars.Height == element.SpecifiedSize.Height | medium2);
-        }
-
-
-        private static void AddSimpleConstraint(
-            Solver solver,
-            IConstraintLayoutParams layoutParams,
-            Variable lhs,
-            SimpleConstraint constraint)
-        {
-            if (constraint == null) return;
-
-            if (constraint.Control == null ||
-                constraint.Property == ConstraintProperty.None)
-            {
-                solver.AddConstraint(lhs == constraint.Constant);
-            }
-            else
-            {
-                var element = layoutParams.GetElement(constraint.Control);
-                var elementVar = element.Vars[constraint.Property];
-                solver.AddConstraint(lhs == elementVar + constraint.Constant);
-            }
         }
     }
 }

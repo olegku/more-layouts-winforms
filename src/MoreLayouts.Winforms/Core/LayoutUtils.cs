@@ -33,7 +33,6 @@ namespace MoreLayouts.WinForms.Core
                 rect.Right - padding.Right,
                 rect.Bottom - padding.Bottom);
 
-
         public static Rectangle AnchorRect(Rectangle outerBounds, Size innerSize, AnchorStyles anchorStyles)
         {
             var anchorLeft = AnchorStylesExtensions.HasFlag(anchorStyles, AnchorStyles.Left);
@@ -101,6 +100,7 @@ namespace MoreLayouts.WinForms.Core
                 Round(rect.Height));
         }
     }
+
 
     public static class AnchorStylesExtensions
     {

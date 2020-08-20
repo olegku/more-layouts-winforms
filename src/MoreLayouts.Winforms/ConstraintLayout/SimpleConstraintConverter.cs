@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
 using System.Globalization;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace MoreLayouts.WinForms.ConstraintLayout
@@ -20,7 +21,7 @@ namespace MoreLayouts.WinForms.ConstraintLayout
             if (value is string stringValue)
             {
                 var constant = int.Parse(stringValue);
-                return new SimpleConstraint(null, ConstraintProperty.None, constant);
+                return new SimplePropertyConstraint(null, ConstraintProperty.None, constant);
             }
 
             return base.ConvertFrom(context, culture, value);
@@ -34,7 +35,7 @@ namespace MoreLayouts.WinForms.ConstraintLayout
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            if (value is SimpleConstraint simpleConstraint)
+            if (value is SimplePropertyConstraint simpleConstraint)
             {
                 if (destinationType == typeof(InstanceDescriptor))
                 {
@@ -45,15 +46,15 @@ namespace MoreLayouts.WinForms.ConstraintLayout
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
-        private static object ConvertToInstanceDescriptor(SimpleConstraint simpleConstraint)
+        private static object ConvertToInstanceDescriptor(SimplePropertyConstraint simplePropertyConstraint)
         {
-            if (simpleConstraint.Control == null && 
-                simpleConstraint.Property == ConstraintProperty.None)
+            if (simplePropertyConstraint.Control == null && 
+                simplePropertyConstraint.Property == ConstraintProperty.None)
             {
                 var constructorInfo = GetConstructorInfo(typeof(int));
                 return new InstanceDescriptor(constructorInfo, new object[]
                 {
-                    simpleConstraint.Constant
+                    simplePropertyConstraint.Constant
                 });
             }
             else
@@ -61,16 +62,16 @@ namespace MoreLayouts.WinForms.ConstraintLayout
                 var constructorInfo = GetConstructorInfo(typeof(Control), typeof(ConstraintProperty), typeof(int));
                 return new InstanceDescriptor(constructorInfo, new object[]
                 {
-                    simpleConstraint.Control,
-                    simpleConstraint.Property,
-                    simpleConstraint.Constant
+                    simplePropertyConstraint.Control,
+                    simplePropertyConstraint.Property,
+                    simplePropertyConstraint.Constant
                 });
             }
         }
 
         private static ConstructorInfo GetConstructorInfo(params Type[] ctorArgumentTypes)
         {
-            var type = typeof(SimpleConstraint);
+            var type = typeof(SimplePropertyConstraint);
             return type.GetConstructor(ctorArgumentTypes) 
                    ?? throw new NotSupportedException(); // TODO: add message
         }

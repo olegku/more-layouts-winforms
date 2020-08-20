@@ -1,16 +1,17 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
+using Kiwi;
 
 namespace MoreLayouts.WinForms.ConstraintLayout
 {
     [TypeConverter(typeof(SimpleConstraintConverter))]
-    public class SimpleConstraint
+    public class SimplePropertyConstraint
     {
-        public SimpleConstraint(int constant) : this(null, ConstraintProperty.None, constant)
+        public SimplePropertyConstraint(double constant) : this(null, ConstraintProperty.None, constant)
         {
         }
 
-        public SimpleConstraint(Control control, ConstraintProperty property, int constant)
+        public SimplePropertyConstraint(Control control, ConstraintProperty property, double constant)
         {
             Control = control;
             Property = property;
@@ -24,14 +25,23 @@ namespace MoreLayouts.WinForms.ConstraintLayout
         
         public ConstraintProperty Property { get; set; }
 
-        // TODO: rename to Offset?
-        public int Constant { get; set; }
+        public double Constant { get; set; }
 
         #endregion
 
-        internal void AddToSolver(Kiwi.Solver solver)
+        // TODO: extract interface
+        internal void AddToSolver(Solver solver, Variable lhs, IConstraintLayoutParams layoutParams)
         {
-            // TODO
+            if (Control == null || Property == ConstraintProperty.None)
+            {
+                solver.AddConstraint(lhs == Constant);
+            }
+            else
+            {
+                var element = layoutParams.GetElement(Control);
+                var elementVar = element.Vars[Property];
+                solver.AddConstraint(lhs == elementVar + Constant);
+            }
         }
 
         public override string ToString()
@@ -39,7 +49,7 @@ namespace MoreLayouts.WinForms.ConstraintLayout
             if (Control != null && Property != ConstraintProperty.None)
             {
                 var result = $"{Control.Name}.{Property}";
-                if (Constant != 0)
+                if (!Constant.IsCloseTo(0))
                 {
                     result += $" + {Constant}";
                 }
