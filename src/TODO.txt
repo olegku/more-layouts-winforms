@@ -15,3 +15,5 @@
 [ ] constraint-layout: change constant from int to double
 [ ] constraint-layout: allow specify Parent panel as RelativeTo 
 [ ] constraint-layout: ClipToBounds property
+[ ] constraint-layout: designer: parse SimplePropertyConstraint from string
+[ ] constraint-layout: add panel-level constraints
