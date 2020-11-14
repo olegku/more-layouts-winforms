@@ -24,8 +24,6 @@ namespace MoreLayouts.WinForms.Design
 
         public Panel Panel => (Panel)Component;
 
-        protected virtual T GetService<T>() => (T) GetService(typeof(T));
-
         protected override void OnPaintAdornments(PaintEventArgs pe)
         {
             if (Panel.BorderStyle == BorderStyle.None && Panel.Visible)

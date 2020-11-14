@@ -29,6 +29,7 @@ namespace MoreLayouts.WinForms.Design
             compositionContainer.ComposeExportedValue(service.GetService<IDesignerHost>());
             compositionContainer.ComposeExportedValue(service.GetService<BehaviorService>());
             compositionContainer.ComposeExportedValue(service.GetService<ISelectionService>());
+            compositionContainer.ComposeExportedValue(service.GetService<IComponentChangeService>());
             compositionContainer.ComposeExportedValue(service.GetService<IDebugOutputPane>());
 
             compositionContainer.SatisfyImportsOnce(layoutPanelDesigner);

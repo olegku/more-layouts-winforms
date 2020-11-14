@@ -65,19 +65,26 @@ namespace MoreLayouts.WinForms.Design
                 ? Panel.Controls.Count
                 : Panel.Controls.IndexOf(_insertionBeforeControl);
 
-            SelectionService.GetSelectedComponents()
-                .OfType<Control>()
-                .ToList()
-                .ForEach(control =>
-                {
-                    var currentIndex = Panel.Controls.GetChildIndex(control);
-                    if (currentIndex >= 0 && currentIndex < insertionIndex)
+            var transaction = DesignerHost.CreateTransaction($"Move {GetSelectedControlsString()} to position {insertionIndex} in {Panel.Name}");
+            using (transaction)
+            using (Panel.ChangingComponentProperty(nameof(Panel.Controls)))
+            {
+                SelectionService.GetSelectedComponents()
+                    .OfType<Control>()
+                    .ToList()
+                    .ForEach(control =>
                     {
-                        insertionIndex--;
-                    }
+                        var currentIndex = Panel.Controls.GetChildIndex(control);
+                        if (currentIndex >= 0 && currentIndex < insertionIndex)
+                        {
+                            insertionIndex--;
+                        }
 
-                    Panel.Controls.SetChildIndex(control, insertionIndex++);
-                });
+                        Panel.Controls.SetChildIndex(control, insertionIndex++);
+                    });
+
+                transaction.Commit();
+            }
 
             ClearInsertionDisplay();
         }
@@ -149,6 +156,17 @@ namespace MoreLayouts.WinForms.Design
 
                 BehaviorService.Invalidate(glyph.Bounds);
             }
+        }
+
+        private string GetSelectedControlsString()
+        {
+            if (SelectionService.SelectionCount == 1 &&
+                SelectionService.PrimarySelection is Control selectedControl)
+            {
+                return selectedControl.Name;
+            }
+
+            return SelectionService.GetSelectedComponents().OfType<Control>().Count() + " Controls";
         }
     }
 }

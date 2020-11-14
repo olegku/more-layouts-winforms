@@ -14,8 +14,14 @@ namespace MoreLayouts.WinForms.StackLayout
     [Designer("MoreLayouts.WinForms.Design.StackLayoutPanelDesigner, MoreLayouts.WinForms.Design")]
     public class StackLayoutPanel : AbstractLayoutPanel<IStackLayoutParams, ILayoutElement>, IStackLayoutParams
     {
-        private Orientation _orientation = Orientation.Vertical;
-        private int _spacing;
+        private static class Defaults
+        {
+            public const Orientation Orientation = System.Windows.Forms.Orientation.Vertical;
+            public const int Spacing = 0;
+        }
+
+        private Orientation _orientation = Defaults.Orientation;
+        private int _spacing = Defaults.Spacing;
 
         protected override AbstractLayoutEngine<IStackLayoutParams, ILayoutElement> CreateLayoutEngine() => new StackLayoutEngine();
         protected override ILayoutElement CreateLayoutElement(Control child) => new LayoutElement(child);
@@ -24,7 +30,7 @@ namespace MoreLayouts.WinForms.StackLayout
 
         [Category("Layout")]
         [Description("Orientation of stack elements arrangement")]
-        [DefaultValue(Orientation.Vertical)]
+        [DefaultValue(Defaults.Orientation)]
         public Orientation Orientation
         {
             get => _orientation;
@@ -33,7 +39,7 @@ namespace MoreLayouts.WinForms.StackLayout
 
         [Category("Layout")]
         [Description("Spacing between stack elements")]
-        [DefaultValue(0)]
+        [DefaultValue(Defaults.Spacing)]
         public int Spacing
         {
             get => _spacing;

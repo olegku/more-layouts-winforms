@@ -9,7 +9,7 @@
 [v] designtime: filter layout property
 [v] designtime: use MEF for services
 
-[ ] stack-layout: designer: support undo/redo for insertion
+[v] stack-layout: designer: support undo/redo for insertion
 [ ] stack-panel: designer: annoying bug with AutoScroll=true and stretched element and Padding=0, scrollbar starts to always grow on resize
 
 [ ] constraint-layout: change constant from int to double
